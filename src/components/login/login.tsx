@@ -12,6 +12,10 @@ import {
   Row,
   Spinner,
 } from "reactstrap";
+
+interface LoginProps {
+  loginStatus: (data: boolean) => void;
+}
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "setFormData":
@@ -33,15 +37,16 @@ const reducer = (state: any, action: any) => {
       return state;
   }
 };
-const Login = () => {
+const Login = ({ loginStatus }: LoginProps) => {
   const [state, dispatch] = useReducer(reducer, {
     errordata: { email: "", password: "" },
     formdata: { email: "", password: "" },
     spinner: false,
   });
-  const handleLogin = async (event: any) => {
+  const handleLogin = (event: any) => {
     event.preventDefault();
     if (state.formdata.email && state.formdata.password) {
+      loginStatus(true);
       dispatch({ type: "setSpinnerData", payload: true });
     } else {
       dispatch({
