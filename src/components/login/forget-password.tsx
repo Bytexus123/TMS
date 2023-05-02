@@ -68,7 +68,7 @@ const ForgetPassword = () => {
                 <Row>
                   <Col sm={10} className="mx-auto">
                     <div className="text-center my-4">
-                      <h3 className="fw-bold">Welcome</h3>
+                      <h3 className="fw-bold">WelCome</h3>
                       <p className="small text-black-50 fw-semibold ">
                         Reset Password
                       </p>
@@ -96,7 +96,7 @@ const ForgetPassword = () => {
                         </InputGroup>
                       </FormGroup>
                       <FormGroup className="text-end">
-                        <Link to={"/"} className="btn btn-link">
+                        <Link to={"/"} className="btn btn-link text-decoration-none">
                           Return To Login
                         </Link>
                       </FormGroup>

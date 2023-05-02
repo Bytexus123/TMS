@@ -1,14 +1,5 @@
-import React from 'react'
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Row,
-} from "reactstrap";
+import React from "react";
+import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 
 const CustomerInfo = () => {
   return (
@@ -54,8 +45,8 @@ const CustomerInfo = () => {
                 <Input id="exampleText" name="text" type="text" bsSize="sm" />
               </FormGroup>
             </Col>
-            </Row>
-            <Row>
+          </Row>
+          <Row>
             <Col sm={3}>
               <FormGroup>
                 <Label>Contact Ext</Label>
@@ -71,12 +62,17 @@ const CustomerInfo = () => {
             <Col sm={3}>
               <FormGroup>
                 <Label>Address</Label>
-                <Input id="exampleText" name="text" type="textarea" bsSize="sm" />
+                <Input
+                  id="exampleText"
+                  name="text"
+                  type="textarea"
+                  bsSize="sm"
+                />
               </FormGroup>
-            </Col> 
+            </Col>
           </Row>
           <Row>
-          <Col sm={3}>
+            <Col sm={3}>
               <FormGroup>
                 <Label>Docket Number</Label>
                 <Input id="exampleText" name="text" type="text" bsSize="sm" />
@@ -95,34 +91,31 @@ const CustomerInfo = () => {
               </FormGroup>
             </Col>
             <Row>
-            <Col sm={3}>
-              <FormGroup>
-                <Label>Available Credit</Label>
-                <Input id="exampleText" name="text" type="text" bsSize="sm" />
-              </FormGroup>
-            </Col>
+              <Col sm={3}>
+                <FormGroup>
+                  <Label>Available Credit</Label>
+                  <Input id="exampleText" name="text" type="text" bsSize="sm" />
+                </FormGroup>
+              </Col>
             </Row>
           </Row>
           <Row>
             <Col sm={3}>
               <FormGroup>
                 <Label>Notes</Label>
-                <Input id="exampleText" name="text" type="textarea" bsSize="sm" />
+                <Input
+                  id="exampleText"
+                  name="text"
+                  type="textarea"
+                  bsSize="sm"
+                />
               </FormGroup>
             </Col>
           </Row>
-          <div className="gap-2 d-md-flex">
-            <Button type="submit" color="primary">
-              Save as Draft
-            </Button>
-            <Button type="submit" color="primary">
-              Next Step
-            </Button>
-          </div>
         </Container>
       </Form>
     </>
-  )
-}
+  );
+};
 
-export default CustomerInfo
+export default CustomerInfo;

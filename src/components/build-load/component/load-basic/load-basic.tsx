@@ -1,18 +1,7 @@
 import React from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Row,
-} from "reactstrap";
+import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 
-interface LoadBasicProps {
-}
-const LoadBasic = ({}:LoadBasicProps) => {
+const LoadBasic = () => {
   return (
     <>
       <Form>
@@ -167,14 +156,6 @@ const LoadBasic = ({}:LoadBasicProps) => {
               </FormGroup>
             </Col>
           </Row>
-          <div className="gap-2 d-md-flex">
-            <Button type="submit" color="primary">
-              Save as Draft
-            </Button>
-            <Button type="submit" color="primary">
-              Next Step
-            </Button>
-          </div>
         </Container>
       </Form>
     </>

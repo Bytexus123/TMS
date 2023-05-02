@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Col,
   Container,
   Form,
@@ -62,39 +61,31 @@ const EditStops = () => {
             </thead>
             <tbody>
               <tr>
-              <td>1</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
+                <td>1</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
               </tr>
               <tr>
-              <td>2</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
-              <td>wshushu</td>
+                <td>2</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
+                <td>wshushu</td>
               </tr>
             </tbody>
           </Table>
-          <div className="gap-2 d-md-flex">
-            <Button type="submit" color="primary">
-              Save as Draft
-            </Button>
-            <Button type="submit" color="primary">
-              Next Step
-            </Button>
-          </div>
         </Container>
       </Form>
     </>

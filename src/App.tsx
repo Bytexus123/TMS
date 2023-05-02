@@ -3,8 +3,14 @@ import { Login, ForgetPassword } from "./components/login";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Cookies from "js-cookie";
 import { LoginContext, PrivateRoute } from "./components/private-routes";
+import { DashboardPage } from "./components/dashboard-page";
+import NavigationBar from "./components/navigation-bar";
+import BuildLoadForm from "./components/build-load";
 
-function App() {
+interface AppProps {
+  tabActive?: number;
+}
+function App({ tabActive }: AppProps) {
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(Cookies.get("isLoggedIn") || "false")
@@ -25,11 +31,12 @@ function App() {
             setLoading,
           }}
         >
+          <NavigationBar />
           <Switch>
             <PrivateRoute
               exact={true}
               path="/dashboard"
-              component={() => <h1>Dashboard</h1>}
+              component={DashboardPage}
             />
             <Route exact={true} path="/">
               {isLoggedIn ? (
@@ -40,6 +47,9 @@ function App() {
             </Route>
             <Route path="/forgetpassword">
               <ForgetPassword />
+            </Route>
+            <Route path="/build-load">
+              <BuildLoadForm tabActive={tabActive} />
             </Route>
           </Switch>
         </LoginContext.Provider>

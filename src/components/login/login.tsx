@@ -75,7 +75,7 @@ const Login = ({ loginStatus }: LoginProps) => {
                 <Row>
                   <Col sm={10} className="mx-auto">
                     <div className="text-center my-4">
-                      <h3 className="fw-bold">Welcome</h3>
+                      <h3 className="fw-bold">WelCome</h3>
                       <p className="small text-black-50 fw-semibold ">
                         Please Sign In Your Account
                       </p>
@@ -138,7 +138,7 @@ const Login = ({ loginStatus }: LoginProps) => {
                       <FormGroup className="text-end">
                         <Link
                           to={"/forgetpassword"}
-                          className="px-0 btn btn-link"
+                          className="px-0 btn btn-link text-decoration-none"
                         >
                           Forget Password
                         </Link>
@@ -159,6 +159,15 @@ const Login = ({ loginStatus }: LoginProps) => {
                             "Login"
                           )}
                         </Button>
+                      </FormGroup>
+                      <FormGroup className="d-flex justify-content-center">
+                        <p className="message">Don't have an account?</p>
+                        <Link
+                          to={"/signup"}
+                          className="btn btn-link text-decoration-none p-0 message ms-2"
+                        >
+                          Sign up
+                        </Link>
                       </FormGroup>
                     </Form>
                   </Col>
