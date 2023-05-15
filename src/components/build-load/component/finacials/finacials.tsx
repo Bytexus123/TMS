@@ -1,5 +1,9 @@
 import React from "react";
-import { Button, Col, Container, Row, Table } from "reactstrap";
+import { Col, Container, Row, Table } from "reactstrap";
+import AddIncomeLineItem from "../../../add-income-line-item/add-income-line-item";
+import AddExpenseLineItem from "../../../add-expense-line-item/add-expense-line-item";
+import ViewCustomerInformation from "../../../view-customer-information/view-customer-information";
+import ViewInvoices from "../../../view-invoices/view-invoices";
 
 const Finacial = () => {
   return (
@@ -51,9 +55,9 @@ const Finacial = () => {
                 </tbody>
               </Table>
             </div>
-            <Button outline color="secondary">
-              Add Income Line Item
-            </Button>
+            <Col outline color="secondary">
+              <AddIncomeLineItem />
+            </Col>
           </Col>
           <Col sm={6}>
             <h5 className="fw-bold my-3">Expenses</h5>
@@ -87,15 +91,15 @@ const Finacial = () => {
                 </tbody>
               </Table>
             </div>
-            <Button className="d-block fw-bold" color="link">
-              View Customer Info.
-            </Button>
-            <Button className="d-block fw-bold" color="link">
-              View Invoice
-            </Button>
-            <Button outline className="mt-4" color="secondary">
-              Add Expense Line Item
-            </Button>
+            <Col className="d-block fw-bold" color="link">
+              <ViewCustomerInformation />
+            </Col>
+            <Col className="d-block fw-bold" color="link">
+              <ViewInvoices />
+            </Col>
+            <Col outline className="mt-4" color="secondary">
+              <AddExpenseLineItem />
+            </Col>
           </Col>
         </Row>
       </Container>
