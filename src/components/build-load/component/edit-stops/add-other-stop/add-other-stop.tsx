@@ -13,17 +13,20 @@ import {
 } from "reactstrap";
 import { GrFormAdd } from "react-icons/gr";
 import { MdSave } from "react-icons/md";
+import AddNewLocation from "../../customer-info/add-new-Locations";
 
 const AddOtherStop = (args: any) => {
   const [modal, setModal] = useState(false);
-
+  const [nestedModal, setNestedModal] = useState(false);
+  const [closeAll, setCloseAll] = useState(false);
   const toggle = () => setModal(!modal);
-
+  const toggleNested = () => {
+    setNestedModal(!nestedModal);
+    setCloseAll(false);
+  };
   return (
     <section>
-      <Button  onClick={toggle}>
-        Add Other Stop
-      </Button>
+      <Button onClick={toggle}>Add Other Stop</Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
         <ModalHeader toggle={toggle} className="headerAddPage">
           Add Other Stop
@@ -45,11 +48,17 @@ const AddOtherStop = (args: any) => {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Button className="mt-4 p-2">
-                    {" "}
+                  <Button className="mt-4 p-2" onClick={toggleNested}>
                     <GrFormAdd size={22} />
-                    Create New Location{" "}
+                    Create New Location
                   </Button>
+                  <Modal
+                    isOpen={nestedModal}
+                    toggle={toggleNested}
+                    onClosed={closeAll ? toggle : undefined}
+                  >
+                    <AddNewLocation />
+                  </Modal>
                 </FormGroup>
               </Col>
             </Row>
