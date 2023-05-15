@@ -12,31 +12,39 @@ import {
   Row,
 } from "reactstrap";
 import { MdSave } from "react-icons/md";
+import {
+  EspensePay,
+  EspenseCategoryFlate,
+  EspenseCategoryMileage,
+  EspenseCategoryStop,
+} from "../add-expense-line-item/espense";
 
-const AddExpenseLineItem = (args: any) => {
+const AddIncomeLineItem = (args: any) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <section>
-      <Button onClick={toggle}>Add Expense Line Item</Button>
+      <Button onClick={toggle}>Add Income Line Item</Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
         <ModalHeader toggle={toggle} className="headerAddPage">
-          Add Expense Line Item
+          Add Income Line Item
         </ModalHeader>
         <ModalBody className="px-4">
           <Form>
             <Row className="mb-3">
               <Col md={6}>
                 <FormGroup>
-                  <Label for="PayableTo">Payable To </Label>
-                  <Input id="PayableTo" name="select" type="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <Label for="IncomeForm">Income Form </Label>
+                  <Input id="IncomeForm" name="select" type="select">
+                    {Object.values(EspensePay).map((key) => {
+                      if (typeof key === "number") {
+                        return <option value={key}>{EspensePay[key]}</option>;
+                      } else {
+                        return null;
+                      }
+                    })}
                   </Input>
                 </FormGroup>
               </Col>
@@ -44,11 +52,45 @@ const AddExpenseLineItem = (args: any) => {
                 <FormGroup>
                   <Label for="exampleSelect">Select Category </Label>
                   <Input id="exampleSelect" name="select" type="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <optgroup label="Flat Rated">
+                      {Object.values(EspenseCategoryFlate).map((key) => {
+                        if (typeof key === "number") {
+                          return (
+                            <option value={key}>
+                              {EspenseCategoryFlate[key]}
+                            </option>
+                          );
+                        } else {
+                          return null;
+                        }
+                      })}
+                    </optgroup>
+                    <optgroup label="Mileage Based">
+                      {Object.values(EspenseCategoryMileage).map((key) => {
+                        if (typeof key === "number") {
+                          return (
+                            <option value={key}>
+                              {EspenseCategoryMileage[key]}
+                            </option>
+                          );
+                        } else {
+                          return null;
+                        }
+                      })}
+                    </optgroup>
+                    <optgroup label="Stop Based">
+                      {Object.values(EspenseCategoryStop).map((key) => {
+                        if (typeof key === "number") {
+                          return (
+                            <option value={key}>
+                              {EspenseCategoryStop[key]}
+                            </option>
+                          );
+                        } else {
+                          return null;
+                        }
+                      })}
+                    </optgroup>
                   </Input>
                 </FormGroup>
               </Col>
@@ -98,8 +140,8 @@ const AddExpenseLineItem = (args: any) => {
               </Col>
             </Row>
 
-            <Row className="mb-3">
-              <Col className="d-flex justify-content-end me-2 " md={12}>
+            <Row>
+              <Col className="d-flex justify-content-end" md={12}>
                 <Button>
                   <MdSave className="me-2 " />
                   Save Pay Item
@@ -113,4 +155,4 @@ const AddExpenseLineItem = (args: any) => {
   );
 };
 
-export default AddExpenseLineItem;
+export default AddIncomeLineItem;

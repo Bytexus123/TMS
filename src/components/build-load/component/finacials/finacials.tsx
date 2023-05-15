@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Container, Row, Table } from "reactstrap";
-import AddIncomeLineItem from "../../../add-income-line-item/add-income-line-item";
-import AddExpenseLineItem from "../../../add-expense-line-item/add-expense-line-item";
-import ViewCustomerInformation from "../../../view-customer-information/view-customer-information";
-import ViewInvoices from "../../../view-invoices/view-invoices";
+import AddExpenseLineItem from "./add-expense-line-item";
+import AddIncomeLineItem from "./add-income-line-item";
+import ViewCustomerInformation from "./view-customer-information";
+import ViewInvoices from "./view-invoices";
 
 const Finacial = () => {
   return (
