@@ -25,7 +25,7 @@ const DashboardPage = () => {
           ></GridPage>
         </div>
         <div className="grid-column">
-          <GridPage variant="wide" name="Loads" image="loads"></GridPage>
+          <GridPage variant="wide" name="Loads" image="loads" link="/load-page"></GridPage>
           <GridPage
             variant="normal"
             name="LTL Orders"

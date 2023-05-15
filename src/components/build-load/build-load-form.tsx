@@ -22,7 +22,7 @@ import {
 interface BuildLoadFormProps {
   tabTitles: string[];
   children?: any[] | JSX.Element | JSX.Element[];
-  tabActive?: number;
+  tabActive: number;
   steps: string[];
 }
 
@@ -44,7 +44,7 @@ const BuildLoadForm = ({ tabTitles, children, steps }: BuildLoadFormProps) => {
   return (
     <>
       <section className="content loads-section">
-        <Container fluid className=" py-3 ">
+        <Container fluid className="py-3">
           <Row>
             <Col sm={3}>
               <Nav tabs pills vertical className="border-bottom-0">

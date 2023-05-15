@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../style/global.scss";
 import {
   Button,
   Col,
@@ -11,21 +9,20 @@ import {
   Label,
   Modal,
   ModalBody,
-  ModalFooter,
   ModalHeader,
   Row,
 } from "reactstrap";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import {MdSave} from "react-icons/md";
-const AddNewLocation = (args: any) => {
+const AddNewPageCustomer = (args: any) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <section>
-      <Button color="danger" onClick={toggle}>
-        Add New Location 
+      <Button onClick={toggle}>
+        Add New Customer
       </Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
         <ModalHeader toggle={toggle} className="headerAddPage">
@@ -33,23 +30,21 @@ const AddNewLocation = (args: any) => {
         </ModalHeader>
         <ModalBody className="px-4">
           <Form>
-          <Row className="mb-3">
+            <Row className="mb-3">
               <Col md={6}>
-                <FormGroup>
-                  <Label for="exampleSelect">Stop Locations </Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Input>
-                </FormGroup>
-                </Col>
-                
+                <InputGroup>
+                  <Input
+                    name="search"
+                    type="text"
+                    placeholder="Search for Customer"
+                  />
+                  <Button>
+                    <AiOutlineFileSearch className="me-2" />
+                    Search
+                  </Button>
+                </InputGroup>
+              </Col>
             </Row>
-           
-            
             <Row className="mb-3">
               <Col md={6}>
                 <Label for="name">Name</Label>
@@ -57,7 +52,7 @@ const AddNewLocation = (args: any) => {
                   id="name"
                   name="name"
                   type="text"
-                 
+                  placeholder=" Enter the Name"
                 ></Input>
               </Col>
             </Row>
@@ -68,84 +63,55 @@ const AddNewLocation = (args: any) => {
                   id="address"
                   name="name"
                   type="text"
-                 
+                  placeholder="Enter Address"
                 />
               </Col>
             </Row>
             <Row >
               <Col md={6}>
                 <FormGroup>
-                <Label for="Extension">Extension</Label>
-                    <Input
-                      id="Extension"
-                      name="Extension"
-                      type="text"
-                     
-                    />
+                  <Label for="email">Email</Label>
+                  <Input id="email" type="text" name="email" placeholder="Enter Email" />
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="Telephone">Telephone</Label>
+                  <Label for="Telephone">Password</Label>
                   <Input
                     id="Telephone"
                     name="Telephone"
                     type="number"
-                   
+                    placeholder="Enter Telephone Number"
                   />
                 </FormGroup>
                 </Col>
             </Row>
             <Row >
-              <Col md={6}>
-                <FormGroup>
-                <Label for="Location"> Location Class </Label>
-                    <Input
-                      id="Location"
-                      name="Extension"
-                      type="text"
-                     
-                    />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="Telephone">Telephone</Label>
-                  <Input
-                    id="Telephone"
-                    name="Telephone"
-                    type="number"
-                   
-                  />
-                </FormGroup>
-                </Col>
-            </Row>
-            <Row >
-              <Col md={6}>
-                <FormGroup>
-                <Label for="Extension">Extension</Label>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label for="Extension">Extension</Label>
                     <Input
                       id="Extension"
                       name="Extension"
                       type="text"
-                     
+                      placeholder="Enter Extension"
                     />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="Telephone">Telephone</Label>
-                  <Input
-                    id="Telephone"
-                    name="Telephone"
-                    type="number"
-                   
-                  />
-                </FormGroup>
+                  </FormGroup>
                 </Col>
             </Row>
-            
-           
+            <Row className="mb-3">
+                <Col md={12}>
+                  <FormGroup>
+                    <Label for="PrivateNote">Private Note</Label>
+                    <Input
+                      id="PrivateNote"
+                      name="PrivateNote"
+                      type="text"
+                      placeholder="Enter Note"
+                    />
+                  </FormGroup>
+                </Col>
+            </Row>
             <Row >
                 <Col className="d-flex justify-content-end" md={12}>
 
@@ -163,4 +129,4 @@ const AddNewLocation = (args: any) => {
   );
 };
 
-export default AddNewLocation;
+export default AddNewPageCustomer;

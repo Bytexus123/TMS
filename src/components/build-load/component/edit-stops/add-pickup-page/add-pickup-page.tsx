@@ -1,36 +1,32 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../style/global.scss";
 import {
   Button,
   Col,
   Form,
   FormGroup,
   Input,
-  InputGroup,
   Label,
   Modal,
   ModalBody,
-  ModalFooter,
   ModalHeader,
   Row,
 } from "reactstrap";
  import {GrFormAdd} from "react-icons/gr";
  import {MdSave} from "react-icons/md";
 
-const AddDiliveryPage = (args: any) => {
+const AddPickupPage = (args: any) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
     <section>
-      <Button color="danger" onClick={toggle}>
-        Add Delivery
+      <Button onClick={toggle}>
+        Add Pick Up
       </Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
         <ModalHeader toggle={toggle} className="headerAddPage">
-          Add Delivery
+          Add Pickup
         </ModalHeader>
         <ModalBody className="px-4">
           <Form>
@@ -184,4 +180,4 @@ const AddDiliveryPage = (args: any) => {
   );
 };
 
-export default AddDiliveryPage;
+export default AddPickupPage;

@@ -8,7 +8,9 @@ import {
   Row,
   Table,
 } from "reactstrap";
-
+import AddDiliveryPage from "./add-dilivery-page";
+import AddPickupPage from "./add-pickup-page";
+import AddOtherStop from "./add-other-stop";
 
 const EditStops = () => {
   return (
@@ -39,9 +41,15 @@ const EditStops = () => {
           <Col sm={3}>
             <h2>Stops</h2>
           </Col>
-          <Col sm={3}>A</Col>
-          <Col sm={3}>B</Col>
-          <Col sm={3}>C</Col>
+          <Col sm={3}>
+            <AddPickupPage />
+          </Col>
+          <Col sm={3}>
+            <AddDiliveryPage />
+          </Col>
+          <Col sm={3}>
+            <AddOtherStop />
+          </Col>
         </Row>
         <Table striped responsive hover className="border">
           <thead>

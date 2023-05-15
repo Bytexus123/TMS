@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import reactstrap css
 import {
   Nav,
   NavItem,
@@ -17,108 +16,46 @@ import {
   CardHeader,
   CardBody,
 } from "reactstrap";
-// import bootstrap css
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../style/global.scss";
-// import icons
 import { TbListSearch } from "react-icons/tb";
 import { MdOutlinePostAdd } from "react-icons/md";
 
-const LoadPageMAnagement = () => {
-  const [activeTab, setActiveTab] = useState("1");
+interface LoadPageMAnagementProps {
+  tabTitles: string[];
+  children?: any[] | JSX.Element | JSX.Element[];
+  tabActive: number;
+}
+const LoadPageMAnagement = ({ tabTitles }: LoadPageMAnagementProps) => {
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section>
+    <section className="content loads-section">
       <Container fluid className="py-3">
         <Row>
-          <Col md={2}>
-            <div className="leftSection">
-              <Nav tabs pills vertical className="border-bottom-0">
-                <NavItem className="mb-2 p-0">
+          <Col sm={3}>
+            <Nav tabs pills vertical className="border-bottom-0">
+              {tabTitles.map((tabTitle, index) => (
+                <NavItem className="mb-2" key={index}>
                   <NavLink
-                    className={` text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "1" ? "active" : ""
+                    className={`text-dark bg-light opacity-50 py-4 cursor-pointer ${
+                      activeTab === index
+                        ? "active opacity-100 fw-bold"
+                        : "fw-semibold"
                     }`}
-                    onClick={() => setActiveTab("1")}
+                    onClick={() => setActiveTab(index)}
                   >
-                    Active Loads
+                    {tabTitle}
                   </NavLink>
                 </NavItem>
-                <NavItem className="mb-2 p-0">
-                  <NavLink
-                    className={` text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "2" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("2")}
-                  >
-                    Planning Loads
-                  </NavLink>
-                </NavItem>
-                <NavItem className="mb-2 p-0">
-                  <NavLink
-                    className={` text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "3" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("3")}
-                  >
-                    Ready for Accounting Loads
-                  </NavLink>
-                </NavItem>
-                <NavItem className="mb-2 p-0">
-                  <NavLink
-                    className={`text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "4" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("4")}
-                  >
-                    Misc. Loads
-                  </NavLink>
-                </NavItem>
-                <NavItem className="mb-2 p-0 ">
-                  <NavLink
-                    className={`text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "5" ? "active  " : ""
-                    }`}
-                    onClick={() => setActiveTab("5")}
-                  >
-                    All Loads
-                  </NavLink>
-                </NavItem>
-
-                <NavItem className="mb-2 p-0 ">
-                  <NavLink
-                    className={`text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "6" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("6")}
-                  >
-                    My Loads
-                  </NavLink>
-                </NavItem>
-                <NavItem className="mb-2 p-0 ">
-                  <NavLink
-                    className={`text-dark fw-bold border-0 p-3 tabPointer ${
-                      activeTab === "7" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("7")}
-                  >
-                    Externally Posted Loads
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </div>
+              ))}
+            </Nav>
           </Col>
 
-          <Col md={10}>
-            <Container
-              fluid
-              className="bg-light rounded"
-              style={{ minHeight: "600px" }}
-            >
+          <Col sm={9} className="ps-0" style={{ zIndex: 1 }}>
+            <Container fluid className="bg-light rounded">
               <Row>
                 <Col>
                   <TabContent activeTab={activeTab}>
-                    <TabPane tabId="1">
+                    <TabPane tabId={0}>
                       <div className="searchSection">
                         <Nav className="justify-content-between ">
                           <NavItem>
@@ -185,9 +122,9 @@ const LoadPageMAnagement = () => {
                                       </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> hello </td>
-                                        </tr>
+                                      <tr>
+                                        <td> hello </td>
+                                      </tr>
                                     </tbody>
                                   </Table>
                                 </CardBody>
@@ -198,7 +135,7 @@ const LoadPageMAnagement = () => {
                       </div>
                     </TabPane>
 
-                    <TabPane tabId="2">
+                    <TabPane tabId={1}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -251,7 +188,7 @@ const LoadPageMAnagement = () => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId="3">
+                    <TabPane tabId={2}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -285,11 +222,9 @@ const LoadPageMAnagement = () => {
                                       </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-
-                                            </td>
-                                        </tr>
+                                      <tr>
+                                        <td></td>
+                                      </tr>
                                     </tbody>
                                   </Table>
                                 </CardBody>
@@ -299,7 +234,7 @@ const LoadPageMAnagement = () => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId="4">
+                    <TabPane tabId={3}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -340,7 +275,7 @@ const LoadPageMAnagement = () => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId="5">
+                    <TabPane tabId={4}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -381,7 +316,7 @@ const LoadPageMAnagement = () => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId="6">
+                    <TabPane tabId={5}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -422,7 +357,7 @@ const LoadPageMAnagement = () => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId="7">
+                    <TabPane tabId={6}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">

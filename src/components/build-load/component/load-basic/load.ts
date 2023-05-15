@@ -1,97 +1,137 @@
-export enum LoadType {
+export enum LoadTypePlanning {
   "Pennding" = 1,
   "Needs Carrier" = 2,
   "Needs Driver" = 3,
   "Booked - Awaiting Confirmation" = 4,
-  "Ready - confirmation Signed" = 5,
-  "Driver Assigned" = 6,
-  "Dispacted" = 7,
-  "In Transit" = 8,
-  "Watch" = 9,
-  "Possible Claim" = 10,
-  "Delivered" = 11,
-  "Completed" = 12,
-  "To Be Billed" = 13,
-  "Actual claim" = 14,
 }
 
-export enum TruckStatus {
+export enum LoadTypeActiveLoad {
+  "Ready - confirmation Signed" = 1,
+  "Driver Assigned" = 2,
+  "Dispacted" = 3,
+  "In Transit" = 4,
+  "Watch" = 5,
+  "Possible Claim" = 6,
+  "Delivered" = 7,
+}
+export enum LoadTypeLoadComplated {
+  "Completed" = 1,
+  "To Be Billed" = 2,
+  "Actual claim" = 3,
+}
+
+export enum TruckStatusCarrierSetup {
   "Carrier Needs Setup" = 1,
   "Setup Packet Sent To Carrier" = 2,
   "Insurance Verification Needed" = 3,
   "Carrier Setup Not Complete" = 4,
   "Carrier Setup Complete" = 5,
-  "At Piror Load" = 6,
-  "Dispacted" = 7,
-  "At Pickup - Waiting" = 8,
-  "At Pickup - Loading" = 9,
-  "On Time" = 10,
-  "Running Late" = 11,
-  "At Delivery - Waiting" = 12,
-  "At Delivery - Unloading" = 13,
-  "Broken Down" = 14,
-  "In Accident" = 15,
-  "Empty" = 16,
-  "Driver Paid" = 17,
 }
 
-export enum CommodityStatus {
+export enum TruckStatusBeforeYourLoad {
+  "At Piror Load" = 1,
+  "Dispacted" = 2,
+}
+
+export enum TruckStatusDuringYourLoad {
+  "At Pickup - Waiting" = 1,
+  "At Pickup - Loading" = 2,
+  "On Time" = 3,
+  "Running Late" = 4,
+  "At Delivery - Waiting" = 5,
+  "At Delivery - Unloading" = 6,
+  "Broken Down" = 7,
+  "In Accident" = 8,
+}
+
+export enum TruckStatusAfterYourLoad {
+  "Empty" = 1,
+  "Driver Paid" = 2,
+}
+export enum CommodityStatusDry {
   "Dry Goods (Food)" = 1,
   "Dry Goods (General)" = 2,
-  "Insurance Verification Needed" = 3,
-  "Chemicals" = 4,
-  "Explosives" = 5,
-  "Firearms / Ammunition" = 6,
-  "Hazardous Materials" = 7,
-  "Oil / Petrolium" = 8,
-  "Alcohol" = 9,
-  "Antiques / Works of Art" = 10,
-  "Cash, Checks, Currency" = 11,
-  "Consumer Electronics" = 12,
-  "Jewelry " = 13,
-  "Tobacco Products" = 14,
-  "Tanker Freight" = 15,
-  "Live Animals" = 16,
-  "Refrigerated (Food)" = 17,
-  "Refrigerated (General)" = 18,
+}
+export enum CommodityStatusHazardous {
+  "Insurance Verification Needed" = 1,
+  "Chemicals" = 2,
+  "Explosives" = 3,
+  "Firearms / Ammunition" = 4,
+  "Hazardous Materials" = 5,
+  "Oil / Petrolium" = 6,
+}
+export enum CommodityStatusHighValue {
+  "Alcohol" = 1,
+  "Antiques / Works of Art" = 2,
+  "Cash, Checks, Currency" = 3,
+  "Consumer Electronics" = 4,
+  "Jewelry " = 5,
+  "Tobacco Products" = 6,
+}
+export enum CommodityStatusLiquid {
+  "Tanker Freight" = 1,
+}
+export enum CommodityStatusLiveStock {
+  "Live Animals" = 1,
+}
+export enum CommodityStatusTemp {
+  "Refrigerated (Food)" = 1,
+  "Refrigerated (General)" = 2,
 }
 
-export enum EquipmentTypeStatus {
+export enum EquipmentTypeStatusDryVan {
   "Van" = 1,
   "Van - Air-Ride" = 2,
   "Van - Hazardous" = 3,
   "Van - Vented" = 4,
   "Van w/ Curtains" = 5,
   "Van w/ Pallet Exchange" = 6,
-  "Reefer" = 7,
-  "Reefer - Hazardous" = 8,
-  "Reefer w/ Pallet Exchange" = 9,
-  "Double Drop" = 10,
-  "Flatbed" = 11,
-  "Flatbed - Hazardous" = 12,
-  "Flatbed w/ Sides" = 13,
-  "Lowboy" = 14,
-  "Maxi" = 15,
-  "Removable Gooseneck" = 16,
-  "Step Deck" = 17,
-  "Auto Carrier" = 18,
-  "Dump Trailer" = 19,
-  "Hooper Bottom" = 20,
-  "Hotshot" = 21,
-  "Tanker" = 22,
-  "Flatbed/Step Deck" = 23,
-  "Flatbed/Van" = 24,
-  "Flatbed/Reefer" = 25,
-  "Reefer/Van" = 26,
-  "Reefer/Flatbed/Van" = 27,
-  "Power Only" = 28,
 }
 
-export enum EquipmentLengthStatus {
+export enum EquipmentTypeStatusTemp {
+  "Reefer" = 1,
+  "Reefer - Hazardous" = 2,
+  "Reefer w/ Pallet Exchange" = 3,
+}
+export enum EquipmentTypeStatusFlatbed {
+  "Double Drop" = 1,
+  "Flatbed" = 2,
+  "Flatbed - Hazardous" = 3,
+  "Flatbed w/ Sides" = 4,
+  "Lowboy" = 5,
+  "Maxi" = 6,
+  "Removable Gooseneck" = 7,
+  "Step Deck" = 8,
+}
+export enum EquipmentTypeStatusSpecial {
+  "Auto Carrier" = 1,
+  "Dump Trailer" = 2,
+  "Hooper Bottom" = 3,
+  "Hotshot" = 4,
+  "Tanker" = 5,
+}
+export enum EquipmentTypeStatusFlexible {
+  "Flatbed/Step Deck" = 1,
+  "Flatbed/Van" = 2,
+  "Flatbed/Reefer" = 3,
+  "Reefer/Van" = 4,
+  "Reefer/Flatbed/Van" = 5,
+}
+export enum EquipmentTypeStatusMisc {
+  "Power Only" = 1,
+}
+
+export enum EquipmentLengthStatusSmall {
   "20'" = 1,
   "28'" = 2,
-  "40'" = 3,
-  "45'" = 4,
-  "48'" = 5,
-  "53'" = 6,
+}
+
+export enum EquipmentLengthStatusMedium {
+  "40'" = 1,
+  "45'" = 2,
+}
+
+export enum EquipmentLengthStatusLarge {
+  "48'" = 1,
+  "53'" = 2,
 }

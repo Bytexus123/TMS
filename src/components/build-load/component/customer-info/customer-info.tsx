@@ -1,11 +1,15 @@
 import React from "react";
 import { Col, Container, FormGroup, Input, Label, Row } from "reactstrap";
 import { ContactStatus, CustomerStatus } from "./customer";
+import AddNewPageCustomer from "./add-new-customer-page";
 
 const CustomerInfo = () => {
   return (
     <>
-      <h5 className="fw-bold">Customer Information</h5>
+      <div className="justify-content-between d-flex">
+        <h5 className="fw-bold">Customer Information</h5>
+        <AddNewPageCustomer />
+      </div>
       <Container fluid>
         <Row>
           <Col sm={4}>
