@@ -6,6 +6,7 @@ import { LoginContext, PrivateRoute } from "./components/private-routes";
 import { DashboardPage } from "./components/dashboard-page";
 import NavigationBar from "./components/navigation-bar";
 import BuildLoadForm from "./components/build-load";
+import RegistrationForm from "./components/ragistration-form";
 
 interface AppProps {
   tabActive?: number;
@@ -48,8 +49,18 @@ function App({ tabActive }: AppProps) {
             <Route path="/forgetpassword">
               <ForgetPassword />
             </Route>
+            <Route path="/registration-form">
+              <RegistrationForm />
+            </Route>
             <Route path="/build-load">
-              <BuildLoadForm tabActive={tabActive} />
+              <BuildLoadForm tabActive={tabActive} tabTitles={[
+            "Load Basic",
+            "Customer Info",
+            "Carrier Asset Info",
+            "Edit Stops",
+            "Finacial",
+          ]}
+          steps={["0", "1", "2", "3", "4"]}/>
             </Route>
           </Switch>
         </LoginContext.Provider>

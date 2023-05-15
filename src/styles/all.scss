@@ -3,6 +3,8 @@
   --bs-card-border-radius: 0 !important;
   --bs-link-color: var(--bs-primary-rgb) !important;
   --bs-link-hover-color: #900b0f !important;
+  --header-color: #454545;
+  --body-color: #465e78;
 }
 
 * {
@@ -36,3 +38,4 @@
 @import "./navigation";
 @import "./login";
 @import "./dashboard";
+@import "./-loadForm.scss";

@@ -1,0 +1,43 @@
+.content {
+  background-color: #465e78;
+  min-height: 100vh;
+}
+.loads-section .nav-link.active {
+  background-color: #465e78;
+  position: relative;
+  z-index: 1;
+}
+.loads-section .nav-link.active::before {
+  content: "";
+  background-color: var(--bs-light);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -100;
+  top: 0;
+  left: 90%;
+}
+.content-section table th {
+  font-weight: bold;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tab-pane {
+  &.active {
+    display: flex !important;
+  }
+  .form-label {
+    margin-bottom: unset;
+  }
+  flex-direction: column;
+  min-height: 560px;
+  .button-container {
+    margin-top: auto;
+  }
+}
+.fs-small {
+  font-size: small;
+}

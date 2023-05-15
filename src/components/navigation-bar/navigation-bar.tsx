@@ -4,26 +4,46 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  Nav,
+  NavItem,
   Navbar,
   NavbarBrand,
   Row,
   UncontrolledButtonDropdown,
 } from "reactstrap";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { handleLogout } from "../auth";
+import { FaUserAlt } from "react-icons/fa";
+import { BsBell, BsGear } from "react-icons/bs";
+import { BiArrowBack, BiMessageDetail } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
 
-const NavigationBar = () => {
+interface NavigationBarProps {
+  navTitle?: string;
+}
+const NavigationBar = ({ navTitle = "TMS" }: NavigationBarProps) => {
   const { pathname } = useLocation();
 
-  if (pathname === "/" || pathname === "/signup") {
+  if (
+    pathname === "/" ||
+    pathname === "/registration-form" ||
+    pathname === "/forgetpassword"
+  ) {
     return null;
   }
   return (
     <div className="header-section">
       <Navbar className="px-5">
-        <NavbarBrand style={{ color: "white" }}>
-          TMS
-        </NavbarBrand>
+        <Nav>
+          <NavItem>
+            <Link to={"/dashboard"} className="fs-2 pe-2 link-light">
+              {navTitle === "TMS" ? <BiArrowBack /> : null}
+            </Link>
+            <NavbarBrand className="mb-0 fw-bold" style={{ color: "white" }}>
+              {navTitle}
+            </NavbarBrand>
+          </NavItem>
+        </Nav>
         <Row>
           <UncontrolledButtonDropdown direction="down" className="float-right">
             <DropdownToggle
@@ -33,7 +53,7 @@ const NavigationBar = () => {
             >
               <Row>
                 <Col className="user-dropdown-greeting">
-                  <i className="fa-light fa-user"></i>
+                  <FaUserAlt className="fs-2 me-2" />
                   <div className="d-block text-start">
                     <div>TMS User</div>
                     <div>tmsuser@tmsgroup.com</div>
@@ -50,22 +70,19 @@ const NavigationBar = () => {
               <DropdownItem className="border-bottom" onClick={handleLogout}>
                 <div className="d-flex justify-content-between text-align-center">
                   <span className="text-dark">Logout</span>
-                  <i
-                    style={{ fontSize: "1rem" }}
-                    className="fas fa-arrow-right-from-bracket"
-                  ></i>
+                  <FiLogOut style={{ fontSize: "1rem" }} />
                 </div>
               </DropdownItem>
             </DropdownMenu>
             <Col className="d-flex user-dropdown-greeting">
               <div className="px-2">
-                <i className="fa-light fa-message-lines"></i>
+                <BiMessageDetail className="fs-3 me-2" />
               </div>
               <div className="px-2">
-                <i className="fa-light fa-bell"></i>
+                <BsBell className="fs-3 me-2" />
               </div>
               <div>
-                <i className="fa-light fa-gear"></i>
+                <BsGear className="fs-3 me-2" />
               </div>
             </Col>
           </UncontrolledButtonDropdown>

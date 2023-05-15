@@ -163,7 +163,7 @@ const Login = ({ loginStatus }: LoginProps) => {
                       <FormGroup className="d-flex justify-content-center">
                         <p className="message">Don't have an account?</p>
                         <Link
-                          to={"/signup"}
+                          to={"/registration-form"}
                           className="btn btn-link text-decoration-none p-0 message ms-2"
                         >
                           Sign up

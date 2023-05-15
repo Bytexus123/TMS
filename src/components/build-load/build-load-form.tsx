@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { useState } from "react";
 import {
   CarrierAssetInfo,
   CustomerInfo,
@@ -6,73 +6,107 @@ import {
   Finacial,
   LoadBasic,
 } from "./component";
-import { Stepper } from "../stepper/stepper";
-import { Button, Form, TabPane } from "reactstrap";
-import TabColumn from "../tab-panel";
+import {
+  Button,
+  Col,
+  Container,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  TabContent,
+  TabPane,
+} from "reactstrap";
+// import NavigationBar from "../navigation-bar";
 
 interface BuildLoadFormProps {
+  tabTitles: string[];
+  children?: any[] | JSX.Element | JSX.Element[];
   tabActive?: number;
+  steps: string[];
 }
 
-const BuildLoadForm = ({ tabActive }: BuildLoadFormProps) => {
-  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
-    Stepper([
-      <LoadBasic />,
-      <CustomerInfo />,
-      <CarrierAssetInfo />,
-      <EditStops />,
-      <Finacial />,
-    ]);
-  function onSubmit(e: FormEvent) {
+const BuildLoadForm = ({ tabTitles, children, steps }: BuildLoadFormProps) => {
+  children = React.Children.toArray(children);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleNext = () => {
+    setActiveTab((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveTab((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (!isLastStep) return next();
-    alert("Successful Account Creation");
-  }
+  };
   return (
     <>
-      <Form onSubmit={onSubmit}>
-      <TabColumn tabTitles={["LoadBasic",'CustomerInfo','CarrierAssetInfo','EditStops','Finacial']} tabActive={tabActive}>
-        <TabPane tabId={1}>
-          <LoadBasic />
-        </TabPane>
-        <TabPane tabId={2}>
-          <CustomerInfo />
-        </TabPane>
-        <TabPane tabId={3}>
-          <CarrierAssetInfo />
-        </TabPane>
-        <TabPane tabId={4} >
-          <EditStops />
-        </TabPane>
-        <TabPane tabId={5}>
-          <Finacial />
-        </TabPane>
-      </TabColumn>
-        <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
-          {currentStepIndex + 1} / {steps.length}
-        </div>
-        {step}
-        <div
-          style={{
-            marginTop: "1rem",
-            display: "flex",
-            gap: ".5rem",
-            justifyContent: "flex-end",
-          }}
-        >
-          {!isFirstStep && (
-            <Button type="button" onClick={back}>
-              Prev
-            </Button>
-          )}
-          <div className="gap-2 d-md-flex">
-            <Button color="primary">Save as Draft</Button>
-            <Button type="submit" color="primary">
-              {isLastStep ? "Finish" : "Next"}
-            </Button>
-          </div>
-        </div>
-      </Form>
+      <section className="content loads-section">
+        <Container fluid className=" py-3 ">
+          <Row>
+            <Col sm={3}>
+              <Nav tabs pills vertical className="border-bottom-0">
+                {tabTitles.map((tabTitle, index) => (
+                  <NavItem className="mb-2" key={index}>
+                    <NavLink
+                      className={`text-dark bg-light opacity-50 py-4 cursor-pointer ${
+                        activeTab === index
+                          ? "active opacity-100 fw-bold"
+                          : "fw-semibold"
+                      }`}
+                      onClick={() => setActiveTab(index)}
+                    >
+                      {tabTitle}
+                    </NavLink>
+                  </NavItem>
+                ))}
+              </Nav>
+            </Col>
+            <Col sm={9} className="ps-0" style={{ zIndex: 1 }}>
+              <Container fluid className="bg-light rounded">
+                <Row>
+                  <Col className="p-4">
+                    <TabContent activeTab={activeTab}>
+                      <TabPane tabId={0}>
+                        <LoadBasic />
+                      </TabPane>
+                      <TabPane tabId={1}>
+                        <CustomerInfo />
+                      </TabPane>
+                      <TabPane tabId={2}>
+                        <CarrierAssetInfo />
+                      </TabPane>
+                      <TabPane tabId={3}>
+                        <EditStops />
+                      </TabPane>
+                      <TabPane tabId={4}>
+                        <Finacial />
+                      </TabPane>
+                    </TabContent>
+                    <Row className="button-container">
+                      <Col>
+                        {activeTab === 0 ? null : (
+                          <Button onClick={handleBack}>Back</Button>
+                        )}
+                      </Col>
+                      <Col className="d-flex justify-content-end">
+                        <Button className="me-3">Save Draft</Button>
+                        {activeTab === steps.length - 1 ? (
+                          <Button onClick={() => handleSubmit}>Submit</Button>
+                        ) : (
+                          <Button onClick={handleNext}>Next</Button>
+                        )}
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Container>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </>
   );
 };
