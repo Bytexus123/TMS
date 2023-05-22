@@ -61,7 +61,7 @@ const Finacial = () => {
           </Col>
           <Col sm={6}>
             <h5 className="fw-bold my-3">Expenses</h5>
-            <div className="px-3">
+            <div className="px-3 ">
               <Table>
                 <tbody>
                   <tr>
@@ -91,7 +91,7 @@ const Finacial = () => {
                 </tbody>
               </Table>
             </div>
-            <Col className="d-block fw-bold" color="link">
+            <Col className="d-block fw-bold " color="link">
               <ViewCustomerInformation />
             </Col>
             <Col className="d-block fw-bold" color="link">

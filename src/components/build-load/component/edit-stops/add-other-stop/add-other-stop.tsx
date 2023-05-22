@@ -46,9 +46,9 @@ const AddOtherStop = (args: any) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col className="d-flex align-items-end" md={6}>
                 <FormGroup>
-                  <Button className="mt-4 p-2" onClick={toggleNested}>
+                  <Button  onClick={toggleNested}>
                     <GrFormAdd size={22} />
                     Create New Location
                   </Button>
@@ -70,6 +70,9 @@ const AddOtherStop = (args: any) => {
                 </Button>
               </Col> */}
               <Col className="d-flex justify-content-end" md={12}>
+              <Button className="me-3">
+                  <MdSave /> Add Action 
+                </Button>
                 <Button>
                   <MdSave /> Save Stop
                 </Button>

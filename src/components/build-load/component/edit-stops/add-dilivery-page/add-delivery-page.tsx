@@ -47,9 +47,9 @@ const AddDiliveryPage = (args: any) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col  className="d-flex align-items-end" md={6}>
                 <FormGroup>
-                  <Button className="mt-4 p-2" onClick={toggleNested}>
+                  <Button  onClick={toggleNested}>
                     <GrFormAdd size={22} />
                     Create New Location
                   </Button>
@@ -78,7 +78,7 @@ const AddDiliveryPage = (args: any) => {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label for="ref"> Ref. Number </Label>
+                  <Label for="ref"> Ref. Numbers </Label>
                   <Input id="Ref" name="name" type="text" />
                 </FormGroup>
               </Col>
@@ -120,7 +120,7 @@ const AddDiliveryPage = (args: any) => {
             <Row className="mb-8">
               <Col md={12}>
                 <FormGroup>
-                  <Label for="PrivateNote">Drivar Instaructions </Label>
+                  <Label for="PrivateNote">Driver Instaructions </Label>
                   <Input id="PrivateNote" name="PrivateNote" type="text" />
                 </FormGroup>
               </Col>
@@ -133,6 +133,9 @@ const AddDiliveryPage = (args: any) => {
                 </Button>
               </Col> */}
               <Col className="d-flex justify-content-end" md={12}>
+              <Button className="me-3">
+                  <MdSave /> Add Another 
+                </Button>
                 <Button>
                   <MdSave /> Save Stop
                 </Button>

@@ -76,7 +76,7 @@ const AddNewPageCustomer = (args: any) => {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="Telephone">Password</Label>
+                  <Label for="Telephone">Telephone</Label>
                   <Input
                     id="Telephone"
                     name="Telephone"

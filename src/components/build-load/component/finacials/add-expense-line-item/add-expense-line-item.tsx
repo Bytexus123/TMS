@@ -120,7 +120,7 @@ const AddExpenseLineItem = (args: any) => {
                 </Input>
               </Col>
             </Row>
-            <Row>
+            <Row className="mb-3">
               <Col md={6}>
                 <Label for="Total">Total </Label>
                 <Input id="Total" name="select" type="select">
@@ -133,7 +133,7 @@ const AddExpenseLineItem = (args: any) => {
               </Col>
             </Row>
 
-            <Row>
+            <Row className="mb-3">
               <Col md={12}>
                 <Label for="Note">Note/Description</Label>
                 <Input id="Note" name="Note" type="text" />

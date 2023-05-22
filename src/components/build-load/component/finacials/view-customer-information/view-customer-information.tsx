@@ -19,7 +19,7 @@ const ViewCustomerInformation = (args: any) => {
 
   return (
     <section>
-      <Button onClick={toggle}>
+      <Button className="mb-3" onClick={toggle}>
         View Customer Information
       </Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">

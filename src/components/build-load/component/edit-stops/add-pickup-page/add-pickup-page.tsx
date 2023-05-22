@@ -49,10 +49,10 @@ const AddPickupPage = (args: any) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col className="d-flex align-items-end" md={6}>
                 <FormGroup>
-                  <Button className="mt-4 p-2" onClick={toggleNested}>
-                    <GrFormAdd size={22} />
+                  <Button  onClick={toggleNested}>
+                    <GrFormAdd size={20} />
                     Create New Location
                   </Button>
                   <Modal
@@ -95,7 +95,7 @@ const AddPickupPage = (args: any) => {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label for="ref"> Ref. Number </Label>
+                  <Label for="ref"> Ref. Numbers </Label>
                   <Input id="Ref" name="name" type="text" />
                 </FormGroup>
               </Col>
@@ -117,7 +117,7 @@ const AddPickupPage = (args: any) => {
             <Row className="mb-3">
               <Col md={4}>
                 <FormGroup>
-                  <Label for="stopaction">Actual Departur Date/Time </Label>
+                  <Label for="stopaction">Actual Departure Date/Time </Label>
                   <Input id="stopaction" name="name" type="text" />
                 </FormGroup>
               </Col>
@@ -137,7 +137,7 @@ const AddPickupPage = (args: any) => {
             <Row className="mb-8">
               <Col md={12}>
                 <FormGroup>
-                  <Label for="PrivateNote">Drivar Instaructions </Label>
+                  <Label for="PrivateNote">Driver Instaructions </Label>
                   <Input id="PrivateNote" name="PrivateNote" type="text" />
                 </FormGroup>
               </Col>
@@ -149,7 +149,10 @@ const AddPickupPage = (args: any) => {
                   Add Another
                 </Button>
               </Col> */}
-              <Col className="d-flex justify-content-end" md={12}>
+              <Col className="d-flex justify-content-end " md={12}>
+                <Button className="me-3">
+                  <MdSave /> Add Another
+                </Button>
                 <Button>
                   <MdSave /> Save Stop
                 </Button>

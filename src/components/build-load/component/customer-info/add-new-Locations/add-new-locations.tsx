@@ -11,7 +11,7 @@ import {
   ModalHeader,
   Row,
 } from "reactstrap";
-import { AiOutlineFileSearch } from "react-icons/ai";
+
 import { MdSave } from "react-icons/md";
 import { PickupLocation } from "../../edit-stops/add-pickup-page/pickup";
 const AddNewLocation = (args: any) => {
