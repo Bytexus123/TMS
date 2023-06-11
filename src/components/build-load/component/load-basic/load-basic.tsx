@@ -13,6 +13,13 @@ import { TreeSelect } from "antd";
 import { Commoditystatus, EquipmentLengthStatus, Equipmentstatus, Loadstatus, Truckstatus } from "../../../../packages/tms-objects";
 
 const LoadBasic = () => {
+  const[rSelected, setRSelected] = useState(1);
+  const [selectedLoadStatusItems, setSelectedLoadStatusItems] = useState<string[]>([]);
+  const [selectedTruckStatusItems, setSelectedTruckStatusItems] = useState<string[]>([]);
+  const [selectedCommodityItems, setSelectedCommodityItems] = useState<string[]>([]);
+  const [selectedEquipmentStatusItems, setSelectedEquipmentStatusItems] = useState<string[]>([]);
+  const [selectedEquipmentLengthStatusItems, setSelectedEquipmentLengthStatusItems] = useState<string[]>([]);
+  
   return (
     <>
      
@@ -30,7 +37,6 @@ const LoadBasic = () => {
                 onChange={(value: string[]) => {
                   setSelectedLoadStatusItems(value);
                 }}
-                onSelect={handleSelect}
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 placeholder="Please select"
                 style={{ width: "100%" }}
@@ -60,7 +66,6 @@ const LoadBasic = () => {
                 onChange={(value: string[]) => {
                   setSelectedTruckStatusItems(value);
                 }}
-                onSelect={handleSelect}
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 placeholder="Please select"
                 style={{ width: "100%" }}
@@ -100,7 +105,6 @@ const LoadBasic = () => {
                 onChange={(value: string[]) => {
                   setSelectedCommodityItems(value);
                 }}
-                onSelect={handleSelect}
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 placeholder="Please select"
                 style={{ width: "100%" }}
@@ -138,8 +142,8 @@ const LoadBasic = () => {
           
           color="primary"
           outline
-          onClick={() => setR2Selected(3)}
-          active={ r2Selected === 3}
+          onClick={() => setRSelected(3)}
+          active={ rSelected === 3}
         >
           New
         </Button>
@@ -147,8 +151,8 @@ const LoadBasic = () => {
       
           color="primary"
           outline
-          onClick={() => setR2Selected(4)}
-          active={r2Selected === 4}
+          onClick={() => setRSelected(4)}
+          active={rSelected === 4}
         >
           Used
         </Button>
@@ -168,7 +172,6 @@ const LoadBasic = () => {
                 onChange={(value: string[]) => {
                   setSelectedEquipmentStatusItems(value);
                 }}
-                onSelect={handleSelect}
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 placeholder="Please select"
                 style={{ width: "100%" }}
@@ -192,7 +195,6 @@ const LoadBasic = () => {
                 onChange={(value: string[]) => {
                   setSelectedEquipmentLengthStatusItems(value);
                 }}
-                onSelect={handleSelect}
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 placeholder="Please select"
                 style={{ width: "100%" }}
