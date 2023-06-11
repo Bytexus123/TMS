@@ -41,7 +41,7 @@ const AddPickupPage = (args: any) => {
     <section>
       <Button onClick={toggle}>Add Pick Up</Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
-        <ModalHeader toggle={toggle} className="headerAddPage">
+        <ModalHeader toggle={toggle} className="headerAddPage ">
           Add Pickup
         </ModalHeader>
         <ModalBody className="px-4">
