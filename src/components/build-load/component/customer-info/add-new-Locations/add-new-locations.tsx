@@ -11,9 +11,10 @@ import {
   ModalHeader,
   Row,
 } from "reactstrap";
-
 import { MdSave } from "react-icons/md";
-import { PickupLocation } from "../../edit-stops/add-pickup-page/pickup";
+import { Select } from "antd";
+import { LocationsClass } from "../../../../../packages/tms-objects";
+
 const AddNewLocation = (args: any) => {
   const [modal, setModal] = useState(false);
 
@@ -33,18 +34,8 @@ const AddNewLocation = (args: any) => {
             <Row className="mb-3">
               <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleSelect">Stop Locations </Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    {Object.values(PickupLocation).map((key) => {
-                      if (typeof key === "number") {
-                        return (
-                          <option value={key}>{PickupLocation[key]}</option>
-                        );
-                      } else {
-                        return null;
-                      }
-                    })}
-                  </Input>
+                  <Label for="exampleSelect">Stop Locations</Label>
+                  <Input type="text" name="stopLocations" id="stopLocations" />
                 </FormGroup>
               </Col>
             </Row>
@@ -57,7 +48,7 @@ const AddNewLocation = (args: any) => {
             </Row>
             <Row className="mb-3">
               <Col md={12}>
-                <Label for="address"> Address </Label>
+                <Label for="address"> Address</Label>
                 <Input id="address" name="name" type="text" />
               </Col>
             </Row>
@@ -71,21 +62,31 @@ const AddNewLocation = (args: any) => {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Telephone">Telephone</Label>
-                  <Input id="Telephone" name="Telephone" type="number" />
+                  <Input id="Telephone" name="Telephone" type="text" />
                 </FormGroup>
               </Col>
             </Row>
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="Location"> Location Class </Label>
-                  <Input id="Location" name="Extension" type="text" />
+                  <Label for="Location">Location Class</Label>
+                  <Select
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Select Location Class"
+                    filterOption={(input, option) =>
+                      (option?.label ?? "")
+                        .toLowerCase()
+                        .includes(input.toLowerCase())
+                    }
+                    options={LocationsClass}
+                  />
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
                   <Label for="Telephone">Telephone</Label>
-                  <Input id="Telephone" name="Telephone" type="number" />
+                  <Input id="Telephone" name="Telephone" type="text" />
                 </FormGroup>
               </Col>
             </Row>
@@ -99,7 +100,7 @@ const AddNewLocation = (args: any) => {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Telephone">Telephone</Label>
-                  <Input id="Telephone" name="Telephone" type="number" />
+                  <Input id="Telephone" name="Telephone" type="text" />
                 </FormGroup>
               </Col>
             </Row>

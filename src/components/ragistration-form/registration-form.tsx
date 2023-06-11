@@ -6,10 +6,11 @@ import {
   Form,
   FormGroup,
   Input,
-  InputGroup,
-  InputGroupText,
+  Label,
   Row,
 } from "reactstrap";
+import CompanyLogo from "../company-logo";
+import { Link } from "react-router-dom";
 
 type Action =
   | { type: "setMcNumber"; payload: string }
@@ -104,6 +105,13 @@ const RegistrationForm = () => {
             <Col className="vh-100 mx-auto d-flex align-items-center">
               <Container className="login-form py-4 shadow rounded my-5">
                 <Row>
+                  <Col className="border-bottom">
+                    <div className="logo-section text-center my-3 ">
+                      <CompanyLogo height={90} />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
                   <Col sm={10} className="mx-auto">
                     <div className="text-center my-4">
                       <h3 className="fw-bold ">Registration Form</h3>
@@ -112,243 +120,231 @@ const RegistrationForm = () => {
                       <Row>
                         <Col md={4}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                MC Number
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.mcNumber}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setMcNumber",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Mc Number"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Title
+                            </Label>
+                            <Input
+                              type="select"
+                              name="text"
+                              value={state.title}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setTitle",
+                                  payload: event.target.value,
+                                })
+                              }
+                            >
+                              <option>select</option>
+                            </Input>
                           </FormGroup>
                         </Col>
                         <Col md={4}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Company
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.company}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setCompany",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Company"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              First Name
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.firstName}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setFirstName",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your FirstName"
+                            />
                           </FormGroup>
                         </Col>
                         <Col md={4}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Title
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.title}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setTitle",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Title"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Last Name
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.lastName}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setLastName",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Last Name"
+                            />
                           </FormGroup>
                         </Col>
                       </Row>
                       <Row>
-                        <Col md={4}>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                First Name
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.firstName}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setFirstName",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your FirstName"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              MC Number
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.mcNumber}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setMcNumber",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Mc Number"
+                            />
                           </FormGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Last Name
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.lastName}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setLastName",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Last Name"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Company
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.company}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setCompany",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Company"
+                            />
                           </FormGroup>
                         </Col>
-                        <Col md={4}>
+                        </Row>
+                        <Row>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Email
-                              </InputGroupText>
-                              <Input
-                                type="email"
-                                name="email"
-                                value={state.email}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setEmail",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Email"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Email
+                            </Label>
+                            <Input
+                              type="email"
+                              name="email"
+                              value={state.email}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setEmail",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Email"
+                            />
                           </FormGroup>
                         </Col>
-                      </Row>
-                      <Row>
-                        <Col md={4}>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Alertnate Email
-                              </InputGroupText>
-                              <Input
-                                type="email"
-                                name="email"
-                                value={state.alternateEmail}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setAlternateEmail",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Alternate Email"
-                              />
-                            </InputGroup>
-                          </FormGroup>
-                        </Col>
-                        <Col md={4}>
-                          <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Website
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.website}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setWebsite",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Website"
-                              />
-                            </InputGroup>
-                          </FormGroup>
-                        </Col>
-                        <Col md={4}>
-                          <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Fax
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.fax}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setFax",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Fax"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Alertnate Email
+                            </Label>
+                            <Input
+                              type="email"
+                              name="email"
+                              value={state.alternateEmail}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setAlternateEmail",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Alternate Email"
+                            />
                           </FormGroup>
                         </Col>
                       </Row>
                       <Row>
-                        <Col md={4}>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Mobile
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.mobile}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setMobile",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Mobile"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Website
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.website}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setWebsite",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Website"
+                            />
                           </FormGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                           <FormGroup>
-                            <InputGroup>
-                              <InputGroupText className="d-block d-sm-inline fw-bold">
-                                Phone
-                              </InputGroupText>
-                              <Input
-                                type="text"
-                                name="text"
-                                value={state.phone}
-                                onChange={(event) =>
-                                  dispatch({
-                                    type: "setPhone",
-                                    payload: event.target.value,
-                                  })
-                                }
-                                placeholder="Enter Your Phone"
-                              />
-                            </InputGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Fax
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.fax}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setFax",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Fax"
+                            />
                           </FormGroup>
                         </Col>
                       </Row>
-                      <FormGroup className="text-center">
+                      <Row>
+                        <Col md={6}>
+                          <FormGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Mobile
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.mobile}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setMobile",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Mobile"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                          <FormGroup>
+                            <Label className="d-block d-sm-inline fw-bold">
+                              Phone
+                            </Label>
+                            <Input
+                              type="text"
+                              name="text"
+                              value={state.phone}
+                              onChange={(event) =>
+                                dispatch({
+                                  type: "setPhone",
+                                  payload: event.target.value,
+                                })
+                              }
+                              placeholder="Enter Your Phone"
+                            />
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <FormGroup className="text-center mt-3">
+                        <Link
+                          to={"/"}
+                          className="btn btn-outline-primary text-decoration-none mx-3"
+                          type="button"
+                        >
+                          Back to Login
+                        </Link>
                         <Button
                           color="primary"
                           className="px-5 py-2 shadow"

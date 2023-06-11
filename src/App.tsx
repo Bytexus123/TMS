@@ -8,6 +8,8 @@ import NavigationBar from "./components/navigation-bar";
 import BuildLoadForm from "./components/build-load";
 import RegistrationForm from "./components/ragistration-form";
 import LoadPageMAnagement from "./components/load-page";
+import { IdleTimerProvider } from "react-idle-timer";
+import { handleLogout, session_Time_Logout } from "./components/auth";
 
 function App({ tabActive }: any) {
   const [loading, setLoading] = useState(false);
@@ -33,64 +35,59 @@ function App({ tabActive }: any) {
         >
           <NavigationBar />
           <Switch>
-            <PrivateRoute
-              exact={true}
-              path="/dashboard"
-              component={DashboardPage}
-            />
-            <Route exact={true} path="/">
-              {isLoggedIn ? (
-                <Redirect to="/dashboard" />
-              ) : (
-                <Login loginStatus={setLogin} />
-              )}
-            </Route>
-            <Route path="/forgetpassword">
-              <ForgetPassword />
-            </Route>
-            <Route path="/registration-form">
-              <RegistrationForm />
-            </Route>
-            <Route path="/build-load">
-              <BuildLoadForm
-                tabActive={tabActive}
-                tabTitles={[
-                  "Load Basic",
-                  "Customer Info",
-                  "Carrier Asset Info",
-                  "Edit Stops",
-                  "Finacial",
-                ]}
-                steps={["0", "1", "2", "3", "4"]}
+            <IdleTimerProvider
+              timeout={session_Time_Logout}
+              onIdle={handleLogout}
+            >
+              <PrivateRoute
+                exact={true}
+                path="/dashboard"
+                component={DashboardPage}
               />
-            </Route>
-            <Route path="/load-page">
-              <LoadPageMAnagement
-                tabActive={tabActive}
-                tabTitles={[
-                  "Active Loads",
-                  "Planning Loads",
-                  "Ready for Accounting Loads",
-                  "Misc. Loads",
-                  "All Loads",
-                  "My Loads",
-                  "Externally Posted Loads",
-                ]}
-              />
-            </Route>
+              <Route exact={true} path="/">
+                {isLoggedIn ? (
+                  <Redirect to="/dashboard" />
+                ) : (
+                  <Login loginStatus={setLogin} />
+                )}
+              </Route>
+              <Route path="/forgetpassword">
+                <ForgetPassword />
+              </Route>
+              <Route path="/registration-form">
+                <RegistrationForm />
+              </Route>
+              <Route path="/build-load">
+                <BuildLoadForm
+                  tabActive={tabActive}
+                  tabTitles={[
+                    "Load Basic",
+                    "Customer Info",
+                    "Carrier Asset Info",
+                    "Edit Stops",
+                    "Financial",
+                  ]}
+                  steps={["0", "1", "2", "3", "4"]}
+                />
+              </Route>
+              <Route path="/load-page">
+                <LoadPageMAnagement
+                  tabActive={tabActive}
+                  tabTitles={[
+                    "Active Loads",
+                    "Planning Loads",
+                    "Ready for Accounting Loads",
+                    "Misc. Loads",
+                    "All Loads",
+                    "Externally Posted Loads",
+                  ]}
+                />
+              </Route>
+            </IdleTimerProvider>
           </Switch>
         </LoginContext.Provider>
       </Suspense>
     </>
-    // <div className="App">
-    //  <LoadPageMAnagement/>
-    //   <LoadFormPage/>
-    //   <AddNewPageCustomer/>
-    // <AddPickupPage/>
-    // <AddDiliveryPage/>
-    // <AddOtherStop/>
-    // <AddNewLocation/>
-    // </div>
   );
 }
 

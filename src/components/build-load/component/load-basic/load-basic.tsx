@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ButtonGroup,
   Col,
@@ -8,32 +8,21 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import {
-  CommodityStatusDry,
-  CommodityStatusHazardous,
-  CommodityStatusHighValue,
-  CommodityStatusLiquid,
-  CommodityStatusLiveStock,
-  CommodityStatusTemp,
-  EquipmentLengthStatusLarge,
-  EquipmentLengthStatusMedium,
-  EquipmentLengthStatusSmall,
-  EquipmentTypeStatusDryVan,
-  EquipmentTypeStatusFlatbed,
-  EquipmentTypeStatusFlexible,
-  EquipmentTypeStatusMisc,
-  EquipmentTypeStatusSpecial,
-  EquipmentTypeStatusTemp,
-  LoadTypeActiveLoad,
-  LoadTypeLoadComplated,
-  LoadTypePlanning,
-  TruckStatusAfterYourLoad,
-  TruckStatusBeforeYourLoad,
-  TruckStatusCarrierSetup,
-  TruckStatusDuringYourLoad,
-} from "./load";
+import { TreeSelect } from "antd";
+import { Commoditystatus, EquipmentLengthStatus, Equipmentstatus, Loadstatus, Truckstatus } from "../../../../packages/tms-objects";
 
 const LoadBasic = () => {
+  const [selectedLoadStatusItems, setSelectedLoadStatusItems] = useState<string[]>([]);
+  const [selectedCommodityItems, setSelectedCommodityItems] = useState<string[]>([]);
+  const [selectedEquipmentStatusItems, setSelectedEquipmentStatusItems] =useState<string[]>([]);
+  const [selectedEquipmentLengthStatusItems,setSelectedEquipmentLengthStatusItems] = useState<string[]>([]);
+  const [selectedTruckStatusItems, setSelectedTruckStatusItems] = useState<string[]>([]);
+
+  const handleSelect = (value: string, node: any) => {
+    console.log("Selected:", value);
+    console.log("Node:", node);
+  };
+
   return (
     <>
       <h5 className="fw-bold">Load Information</h5>
@@ -42,43 +31,19 @@ const LoadBasic = () => {
           <Col sm={4}>
             <FormGroup>
               <Label for="exampleSelect">Load status</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <optgroup label="Planning">
-                  {Object.values(LoadTypePlanning).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>{LoadTypePlanning[key]}</option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="ActiveLoad">
-                  {Object.values(LoadTypeActiveLoad).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>{LoadTypeActiveLoad[key]}</option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="LaodCompleted">
-                  {Object.values(LoadTypeLoadComplated).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {LoadTypeLoadComplated[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-              </Input>
+              <TreeSelect
+                treeData={Loadstatus}
+                showSearch
+                allowClear
+                value={selectedLoadStatusItems}
+                onChange={(value: string[]) => {
+                  setSelectedLoadStatusItems(value);
+                }}
+                onSelect={handleSelect}
+                showCheckedStrategy={TreeSelect.SHOW_CHILD}
+                placeholder="Please select"
+                style={{ width: "100%" }}
+              />
             </FormGroup>
           </Col>
           <Col sm={4}>
@@ -96,60 +61,19 @@ const LoadBasic = () => {
           <Col sm={4}>
             <FormGroup>
               <Label>Truck status</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <optgroup label="Carrier Setup">
-                  {Object.values(TruckStatusCarrierSetup).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {TruckStatusCarrierSetup[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Before Your Load">
-                  {Object.values(TruckStatusBeforeYourLoad).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {TruckStatusBeforeYourLoad[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="During Your Load">
-                  {Object.values(TruckStatusDuringYourLoad).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {TruckStatusDuringYourLoad[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="After Your Load">
-                  {Object.values(TruckStatusAfterYourLoad).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {TruckStatusAfterYourLoad[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-              </Input>
+              <TreeSelect
+                treeData={Truckstatus}
+                showSearch
+                allowClear
+                value={selectedTruckStatusItems}
+                onChange={(value: string[]) => {
+                  setSelectedTruckStatusItems(value);
+                }}
+                onSelect={handleSelect}
+                showCheckedStrategy={TreeSelect.SHOW_CHILD}
+                placeholder="Please select"
+                style={{ width: "100%" }}
+              />
             </FormGroup>
           </Col>
         </Row>
@@ -177,82 +101,19 @@ const LoadBasic = () => {
           <Col sm={4}>
             <FormGroup>
               <Label>Commodity</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <optgroup label="Dry">
-                  {Object.values(CommodityStatusDry).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>{CommodityStatusDry[key]}</option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Hazardous">
-                  {Object.values(CommodityStatusHazardous).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {CommodityStatusHazardous[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="High Value">
-                  {Object.values(CommodityStatusHighValue).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {CommodityStatusHighValue[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Liquid">
-                  {Object.values(CommodityStatusLiquid).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {CommodityStatusLiquid[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="LiveStock">
-                  {Object.values(CommodityStatusLiveStock).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {CommodityStatusLiveStock[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Temp. Controlled">
-                  {Object.values(CommodityStatusTemp).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>{CommodityStatusTemp[key]}</option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-              </Input>
+              <TreeSelect
+                treeData={Commoditystatus}
+                showSearch
+                allowClear
+                value={selectedCommodityItems}
+                onChange={(value: string[]) => {
+                  setSelectedCommodityItems(value);
+                }}
+                onSelect={handleSelect}
+                showCheckedStrategy={TreeSelect.SHOW_CHILD}
+                placeholder="Please select"
+                style={{ width: "100%" }}
+              />
             </FormGroup>
           </Col>
           <Col sm={4}>
@@ -281,86 +142,19 @@ const LoadBasic = () => {
           <Col sm={4}>
             <FormGroup>
               <Label>Equipment Type</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <optgroup label="Dry Van">
-                  {Object.values(EquipmentTypeStatusDryVan).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusDryVan[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Temp Control">
-                  {Object.values(EquipmentTypeStatusTemp).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusTemp[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Flatbed">
-                  {Object.values(EquipmentTypeStatusFlatbed).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusFlatbed[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Specialized">
-                  {Object.values(EquipmentTypeStatusSpecial).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusSpecial[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Flexible Type">
-                  {Object.values(EquipmentTypeStatusFlexible).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusFlexible[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Misc.">
-                  {Object.values(EquipmentTypeStatusMisc).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentTypeStatusMisc[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-              </Input>
+              <TreeSelect
+                treeData={Equipmentstatus}
+                showSearch
+                allowClear
+                value={selectedEquipmentStatusItems}
+                onChange={(value: string[]) => {
+                  setSelectedEquipmentStatusItems(value);
+                }}
+                onSelect={handleSelect}
+                showCheckedStrategy={TreeSelect.SHOW_CHILD}
+                placeholder="Please select"
+                style={{ width: "100%" }}
+              />
             </FormGroup>
           </Col>
           <Col sm={4}>
@@ -372,47 +166,19 @@ const LoadBasic = () => {
           <Col sm={4}>
             <FormGroup>
               <Label>Equipment Length</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <optgroup label="Small Truck">
-                  {Object.values(EquipmentLengthStatusSmall).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentLengthStatusSmall[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Medium Truck">
-                  {Object.values(EquipmentLengthStatusMedium).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentLengthStatusMedium[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-                <optgroup label="Large Truck">
-                  {Object.values(EquipmentLengthStatusLarge).map((key) => {
-                    if (typeof key === "number") {
-                      return (
-                        <option value={key}>
-                          {EquipmentLengthStatusLarge[key]}
-                        </option>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </optgroup>
-              </Input>
+              <TreeSelect
+                treeData={EquipmentLengthStatus}
+                showSearch
+                allowClear
+                value={selectedEquipmentLengthStatusItems}
+                onChange={(value: string[]) => {
+                  setSelectedEquipmentLengthStatusItems(value);
+                }}
+                onSelect={handleSelect}
+                showCheckedStrategy={TreeSelect.SHOW_CHILD}
+                placeholder="Please select"
+                style={{ width: "100%" }}
+              />
             </FormGroup>
           </Col>
         </Row>

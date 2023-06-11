@@ -1,9 +1,17 @@
 import React from "react";
 import { Col, Container, FormGroup, Input, Label, Row } from "reactstrap";
-import { ContactStatus, CustomerStatus } from "./customer";
 import AddNewPageCustomer from "./add-new-customer-page";
+import { Select } from "antd";
+import { ContactInfo, Customer } from "../../../../packages/tms-objects";
 
 const CustomerInfo = () => {
+  const onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+
+  const onSearch = (value: string) => {
+    console.log("search:", value);
+  };
   return (
     <>
       <div className="justify-content-between d-flex">
@@ -15,16 +23,20 @@ const CustomerInfo = () => {
           <Col sm={4}>
             <FormGroup>
               <Label for="exampleSelect">Customer</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <option value="">Type Customer Name</option>
-                {Object.values(CustomerStatus).map((key) => {
-                  if (typeof key === "number") {
-                    return <option value={key}>{CustomerStatus[key]}</option>;
-                  } else {
-                    return null;
-                  }
-                })}
-              </Input>
+              <Select
+                showSearch
+                placeholder="Select a Customer"
+                style={{ width: "100%" }}
+                optionFilterProp="children"
+                onChange={onChange}
+                onSearch={onSearch}
+                filterOption={(input, option) =>
+                  (option?.label ?? "")
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
+                }
+                options={Customer}
+              />
             </FormGroup>
           </Col>
         </Row>
@@ -32,16 +44,20 @@ const CustomerInfo = () => {
           <Col sm={4}>
             <FormGroup>
               <Label>Contact Name</Label>
-              <Input id="exampleSelect" name="select" type="select" bsSize="sm">
-                <option value="">Type Contact Name</option>
-                {Object.values(ContactStatus).map((key) => {
-                  if (typeof key === "number") {
-                    return <option value={key}>{ContactStatus[key]}</option>;
-                  } else {
-                    return null;
-                  }
-                })}
-              </Input>
+              <Select
+                showSearch
+                placeholder="Select a Customer"
+                style={{ width: "100%" }}
+                optionFilterProp="children"
+                onChange={onChange}
+                onSearch={onSearch}
+                filterOption={(input, option) =>
+                  (option?.label ?? "")
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
+                }
+                options={ContactInfo}
+              />
             </FormGroup>
           </Col>
           <Col sm={4}>

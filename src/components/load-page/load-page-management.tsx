@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Nav,
   NavItem,
@@ -26,7 +26,10 @@ interface LoadPageMAnagementProps {
 }
 const LoadPageMAnagement = ({ tabTitles }: LoadPageMAnagementProps) => {
   const [activeTab, setActiveTab] = useState(0);
-
+  const documentUploadRef = useRef<HTMLInputElement>(null);
+  const handleDocumentUpload = (file: File) => {
+    console.log(file);
+  };
   return (
     <section className="content loads-section">
       <Container fluid className="py-3">
@@ -71,9 +74,30 @@ const LoadPageMAnagement = ({ tabTitles }: LoadPageMAnagementProps) => {
                             </InputGroup>
                           </NavItem>
                           <NavItem className="py-4">
-                            <Button outline>
-                              <MdOutlinePostAdd size={20} /> Post Load
+                            <Button
+                              outline
+                              onClick={() => {
+                                if (!documentUploadRef.current) {
+                                  return;
+                                }
+
+                                documentUploadRef.current.click();
+                              }}
+                            >
+                              <MdOutlinePostAdd size={20} /> Upload Load
                             </Button>
+                            <input
+                              ref={documentUploadRef}
+                              type="file"
+                              multiple
+                              className="d-none"
+                              onChange={(e) => {
+                                const file = e.currentTarget.files?.[0];
+                                if (file) {
+                                  handleDocumentUpload(file);
+                                }
+                              }}
+                            />
                           </NavItem>
                         </Nav>
                       </div>
@@ -316,7 +340,7 @@ const LoadPageMAnagement = ({ tabTitles }: LoadPageMAnagementProps) => {
                         </Container>
                       </div>
                     </TabPane>
-                    <TabPane tabId={5}>
+                    {/* <TabPane tabId={5}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">
@@ -356,8 +380,8 @@ const LoadPageMAnagement = ({ tabTitles }: LoadPageMAnagementProps) => {
                           </Row>
                         </Container>
                       </div>
-                    </TabPane>
-                    <TabPane tabId={6}>
+                    </TabPane> */}
+                    <TabPane tabId={5}>
                       <div>
                         <Container fluid>
                           <Row className="pt-4">

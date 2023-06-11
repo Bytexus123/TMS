@@ -13,8 +13,9 @@ import {
 } from "reactstrap";
 import { GrFormAdd } from "react-icons/gr";
 import { MdSave } from "react-icons/md";
-import { PickupStopAction } from "./pickup";
 import AddNewLocation from "../../customer-info/add-new-Locations";
+import { Select } from "antd";
+import { PickupLocations } from "../../../../../packages/tms-objects";
 
 const AddPickupPage = (args: any) => {
   const [modal, setModal] = useState(false);
@@ -27,6 +28,15 @@ const AddPickupPage = (args: any) => {
     setNestedModal(!nestedModal);
     setCloseAll(false);
   };
+
+  const onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+
+  const onSearch = (value: string) => {
+    console.log("search:", value);
+  };
+
   return (
     <section>
       <Button onClick={toggle}>Add Pick Up</Button>
@@ -51,17 +61,17 @@ const AddPickupPage = (args: any) => {
               </Col>
               <Col className="d-flex align-items-end" md={6}>
                 <FormGroup>
-                  <Button  onClick={toggleNested}>
+                  <Button onClick={toggleNested}>
                     <GrFormAdd size={20} />
                     Create New Location
+                    <Modal
+                      isOpen={nestedModal}
+                      toggle={toggleNested}
+                      onClosed={closeAll ? toggle : undefined}
+                    >
+                      <AddNewLocation />
+                    </Modal>
                   </Button>
-                  <Modal
-                    isOpen={nestedModal}
-                    toggle={toggleNested}
-                    onClosed={closeAll ? toggle : undefined}
-                  >
-                    <AddNewLocation />
-                  </Modal>
                 </FormGroup>
               </Col>
             </Row>
@@ -69,22 +79,20 @@ const AddPickupPage = (args: any) => {
               <Col md={4}>
                 <FormGroup>
                   <Label for="stopaction"> Stop Action </Label>
-                  <Input
-                    id="exampleSelect"
-                    name="select"
-                    type="select"
-                    bsSize="sm"
-                  >
-                    {Object.values(PickupStopAction).map((key) => {
-                      if (typeof key === "number") {
-                        return (
-                          <option value={key}>{PickupStopAction[key]}</option>
-                        );
-                      } else {
-                        return null;
-                      }
-                    })}
-                  </Input>
+                  <Select
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Select a Location"
+                    optionFilterProp="children"
+                    onChange={onChange}
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      (option?.label ?? "")
+                        .toLowerCase()
+                        .includes(input.toLowerCase())
+                    }
+                    options={PickupLocations}
+                  />
                 </FormGroup>
               </Col>
               <Col md={4}>

@@ -14,6 +14,8 @@ import {
 import { GrFormAdd } from "react-icons/gr";
 import { MdSave } from "react-icons/md";
 import AddNewLocation from "../../customer-info/add-new-Locations/add-new-locations";
+import { Select } from "antd";
+import { PickupLocations } from "../../../../../packages/tms-objects";
 
 const AddDiliveryPage = (args: any) => {
   const [modal, setModal] = useState(false);
@@ -25,6 +27,15 @@ const AddDiliveryPage = (args: any) => {
     setNestedModal(!nestedModal);
     setCloseAll(false);
   };
+
+  const onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+
+  const onSearch = (value: string) => {
+    console.log("search:", value);
+  };
+
   return (
     <section>
       <Button onClick={toggle}>Add Delivery</Button>
@@ -47,9 +58,9 @@ const AddDiliveryPage = (args: any) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col  className="d-flex align-items-end" md={6}>
+              <Col className="d-flex align-items-end" md={6}>
                 <FormGroup>
-                  <Button  onClick={toggleNested}>
+                  <Button onClick={toggleNested}>
                     <GrFormAdd size={22} />
                     Create New Location
                   </Button>
@@ -67,7 +78,20 @@ const AddDiliveryPage = (args: any) => {
               <Col md={4}>
                 <FormGroup>
                   <Label for="stopaction"> Stop Action </Label>
-                  <Input id="stopaction" name="name" type="text" />
+                  <Select
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Select a Location"
+                    optionFilterProp="children"
+                    onChange={onChange}
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      (option?.label ?? "")
+                        .toLowerCase()
+                        .includes(input.toLowerCase())
+                    }
+                    options={PickupLocations}
+                  />
                 </FormGroup>
               </Col>
               <Col md={4}>
@@ -133,8 +157,8 @@ const AddDiliveryPage = (args: any) => {
                 </Button>
               </Col> */}
               <Col className="d-flex justify-content-end" md={12}>
-              <Button className="me-3">
-                  <MdSave /> Add Another 
+                <Button className="me-3">
+                  <MdSave /> Add Another
                 </Button>
                 <Button>
                   <MdSave /> Save Stop

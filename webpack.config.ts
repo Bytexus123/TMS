@@ -1,10 +1,11 @@
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
 import { Configuration as WebpackConfig } from "webpack";
 import { Configuration as DevServerConfig } from "webpack-dev-server";
 
+const AntdScssThemePlugin = require("antd-scss-theme-plugin");
 
 interface Configuration extends WebpackConfig {
   devServer?: DevServerConfig;
@@ -49,7 +50,7 @@ export default (_env: Record<string, any>, argv: any): Configuration => ({
         exclude: /node_modules/,
         use: "ts-loader",
       },
-      
+
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
@@ -64,34 +65,21 @@ export default (_env: Record<string, any>, argv: any): Configuration => ({
         test: /\.html$/,
         use: ["html-loader"],
       },
-      // {
-      //   test: /\.(gif|png|jpe?g)$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: '[path][name].[ext]',
-      //         publicPath: 'assets/'
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   test: /\.(svg|png|jpg|jpeg|gif)$/i,
-      //   include: /node_modules/,
-      //   type: "assets/resource",
-      // },
-      // {
-      //   test: /\.(png|jpg|jpeg|gif)$/i,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "url-loader",
-      //     options: {
-      //       limit: 10000,
-      //       esModule: false,
-      //     },
-      //   },
-      // },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "less-loader",
+            options: { lessOptions: { javascriptEnabled: true } },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -101,10 +89,9 @@ export default (_env: Record<string, any>, argv: any): Configuration => ({
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    assetModuleFilename: 'images/[hash][ext][query]'
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   plugins: [
-    
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Caching",
@@ -115,5 +102,6 @@ export default (_env: Record<string, any>, argv: any): Configuration => ({
     new MiniCssExtractPlugin({
       filename: "all.css",
     }),
+    new AntdScssThemePlugin("./theme.scss"),
   ],
 });

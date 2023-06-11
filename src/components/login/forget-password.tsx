@@ -11,6 +11,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import CompanyLogo from "../company-logo";
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "setFormData":
@@ -66,9 +67,16 @@ const ForgetPassword = () => {
             >
               <Container className="login-form py-4 shadow rounded">
                 <Row>
+                  <Col className="border-bottom">
+                    <div className="logo-section text-center my-3 ">
+                      <CompanyLogo height={90} />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
                   <Col sm={10} className="mx-auto">
                     <div className="text-center my-4">
-                      <h3 className="fw-bold">WelCome</h3>
+                      <h3 className="fw-bold">Welcome</h3>
                       <p className="small text-black-50 fw-semibold ">
                         Reset Password
                       </p>
@@ -96,7 +104,10 @@ const ForgetPassword = () => {
                         </InputGroup>
                       </FormGroup>
                       <FormGroup className="text-end">
-                        <Link to={"/"} className="btn btn-link text-decoration-none">
+                        <Link
+                          to={"/"}
+                          className="btn btn-link text-decoration-none"
+                        >
                           Return To Login
                         </Link>
                       </FormGroup>

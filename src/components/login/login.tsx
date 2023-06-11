@@ -12,6 +12,7 @@ import {
   Row,
   Spinner,
 } from "reactstrap";
+import CompanyLogo from "../company-logo";
 
 interface LoginProps {
   loginStatus: (data: boolean) => void;
@@ -73,9 +74,16 @@ const Login = ({ loginStatus }: LoginProps) => {
             >
               <Container className="login-form py-4 shadow rounded">
                 <Row>
+                  <Col className="border-bottom">
+                    <div className="logo-section text-center my-3 ">
+                      <CompanyLogo height={90} />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
                   <Col sm={10} className="mx-auto">
                     <div className="text-center my-4">
-                      <h3 className="fw-bold">WelCome</h3>
+                      <h3 className="fw-bold">Welcome</h3>
                       <p className="small text-black-50 fw-semibold ">
                         Please Sign In Your Account
                       </p>
