@@ -23,7 +23,7 @@ const ViewCustomerInformation = (args: any) => {
         View Customer Information
       </Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
-        <ModalHeader toggle={toggle} className="headerAddPage">
+        <ModalHeader toggle={toggle} className="headerAddPage modal-header">
           View Customer Information
         </ModalHeader>
         <ModalBody className="px-4">

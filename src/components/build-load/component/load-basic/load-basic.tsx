@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Button,
   ButtonGroup,
   Col,
   Container,
@@ -34,10 +35,13 @@ import {
 } from "./load";
 
 const LoadBasic = () => {
+  const [ rSelected , setRSelected] = useState(Number);
+  const [ r2Selected , setR2Selected] = useState(Number);
   return (
     <>
-      <h5 className="fw-bold">Load Information</h5>
+     
       <Container fluid>
+      <h5 className="fw-bold pb-2">Load Information</h5>
         <Row>
           <Col sm={4}>
             <FormGroup>
@@ -255,28 +259,55 @@ const LoadBasic = () => {
               </Input>
             </FormGroup>
           </Col>
-          <Col sm={4}>
-            <FormGroup>
-              <Label>Load Size</Label>
-              <Input name="radio2" type="radio" />
-              <Label>Full Load</Label>
-              <Input name="radio2" type="radio" />
-              <Label>Partial Load</Label>
-            </FormGroup>
+          <Col sm={4} className="d-flex align-items-center" >
+        <p className="mb-0">Load Size </p>
+            <ButtonGroup className="p-2">
+            <Button
+          
+          
+          outline
+          onClick={() => setRSelected(1)}
+          active={rSelected === 1}
+        >
+          Full Load 
+        </Button>
+        <Button
+       
+         
+          outline
+          onClick={() => setRSelected(2)}
+          active={rSelected === 2}
+        >
+          Partial Load 
+        </Button>
+            </ButtonGroup>
+           
           </Col>
-          <Col sm={4}>
-            <FormGroup>
-              <Label>New or Used Goods</Label>
-              <ButtonGroup>
-                <Input name="radio1" type="radio" />
-                <Label>New</Label>
-                <Input name="radio1" type="radio" />
-                <Label>Used</Label>
-              </ButtonGroup>
-            </FormGroup>
+          <Col sm={4} className="d-flex align-items-center" >
+          <p className="mb-0" >New or Used Goods  </p>
+            <ButtonGroup className="p-2"  >
+            <Button
+          
+          color="primary"
+          outline
+          onClick={() => setR2Selected(3)}
+          active={ r2Selected === 3}
+        >
+          New
+        </Button>
+        <Button
+      
+          color="primary"
+          outline
+          onClick={() => setR2Selected(4)}
+          active={r2Selected === 4}
+        >
+          Used
+        </Button>
+            </ButtonGroup>
           </Col>
         </Row>
-        <h3>Equipment Information</h3>
+        <h5 className="fw-bold pb-2">Equipment Information</h5>
         <Row>
           <Col sm={4}>
             <FormGroup>
@@ -430,7 +461,7 @@ const LoadBasic = () => {
             </FormGroup>
           </Col>
         </Row>
-        <h3>Load Notes</h3>
+        <h5 className="fw-bold pb-2">Load Notes</h5>
         <Row>
           <Col sm={4}>
             <FormGroup>

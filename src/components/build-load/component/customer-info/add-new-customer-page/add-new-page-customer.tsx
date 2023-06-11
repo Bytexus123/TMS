@@ -25,7 +25,7 @@ const AddNewPageCustomer = (args: any) => {
         Add New Customer
       </Button>
       <Modal isOpen={modal} toggle={toggle} {...args} size="lg">
-        <ModalHeader toggle={toggle} className="headerAddPage">
+        <ModalHeader toggle={toggle} className="headerAddPage  modal-header">
           Add New Customer
         </ModalHeader>
         <ModalBody className="px-4">
